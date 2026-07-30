@@ -2,7 +2,6 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_groq import ChatGroq
 import langchain
 from langchain.agents import create_agent
-import langchain_community
 from tavily import TavilyClient
 import pytesseract as py
 import streamlit as st
@@ -20,8 +19,8 @@ model = ChatGoogleGenerativeAI(
     model = 'gemini-3.5-flash-lite',
     google_api_key=GOOGLE_API_KEY
 )
-response = model.invoke("hello Buddy!")
-response.content[-1]['text']
+# response = model.invoke("hello Buddy!")
+# response.content[-1]['text']
 
 def search_latest_news_jobs(query):
   '''This function helps to fetch latest
@@ -37,7 +36,7 @@ agent=create_agent(
     tools=[search_latest_news_jobs]
 
 )
-agent
+# agent
 
 def main_agent(agent,query):
   '''this is main agent or leader agent orchestrate sub agent'''
@@ -61,6 +60,24 @@ def main_agent(agent,query):
   return code
 
 
-code = main_agent(agent,"ALAN TURING, GEN AI EXPERT")
-from IPython import display as DISPLAY
-DISPLAY.HTML(code)
+# code = main_agent(agent,"ALAN TURING, GEN AI EXPERT")
+# from IPython import display as DISPLAY
+# DISPLAY.HTML(code)
+
+
+
+def get_jobs(agent,location='delhi',profile='data analyst, SDE'):
+  location='delhi'
+  profile='data analyst, SDE'
+  prompt="""Based on user given job proifile,using naukri,linkedin,indeed and other popular platform which are trusted and used to apply jobs
+  ,so results with job profile name location salary company name requirements.
+  show only jobs related to given{location}and{profile}
+  output must be in professsional html naukri theme carts with dynamic design """
+  response = agent.invoke({'messages':[{'role':'user','content':prompt}]})
+  return response['messages'][-1].content[-1]['text']
+
+  return code
+
+# code = get_jobs(agent)
+#  from IPython import display as DISPLAY
+# DISPLAY.HTML(code)
