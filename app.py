@@ -30,10 +30,9 @@ st.image("BG.jpg")
 
 # ========API KEYS============# 
 # Step 3 API keys
-TAVILY_API_KEY =" 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"
-GROQ_API_KEY ="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"
-GOOGLE_API_KEY ="AQ.Ab8RN6JWhO0L-Z8NKtu2EFVic-ZICA3a9fJjsGPi8QAhPf5Nzg"
-
+TAVILY_API_KEY = st.sidebar.text_input("Gemini-API",type= "password")
+GROQ_API_KEY =   st.sidebar.text_input("Groq-API",type= "password")
+GOOGLE_API_KEY = st.sidebar.text_input("Tavily-API",type= "password")
 
 # ================ MODEL====================
 model = ChatGoogleGenerativeAI(
