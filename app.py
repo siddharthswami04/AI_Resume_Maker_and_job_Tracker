@@ -23,7 +23,9 @@ st.title("AI RESUME GENERATOR")
 st.write("""This app helps user to build customized Professional
 Resume with Latest Job apply links""")
 
-st.image("BG.jpg")
+st.image("https://github.com/siddharthswami04/AI_Resume_Maker_and_job_Tracker/blob/main/BG.jpg")
+st.sidebar.title("Fill Important Details")
+st.sidebarimage("https://github.com/siddharthswami04/AI_Resume_Maker_and_job_Tracker/blob/main/BG.jpg")
 
 
 
@@ -40,6 +42,10 @@ if not all(all_API):
     st.stop()
 elif all(all_API):
     st.success("API KEYS LOADED SUCCESFULLY")
+    model = ChatGoogleGenerativeAI(
+    model = 'gemini-3.5-flash-lite',
+    google_api_key = GOOGLE_API_KEY
+    )
 else:
     st.info("PASS ALL API-KEYS")
 
@@ -56,10 +62,7 @@ st.markdown('''### GET USER INFO''')
 user_info=st.text_area('''Write your Resume Description:''')
 
 # ================ MODEL====================
-model = ChatGoogleGenerativeAI(
-    model = 'gemini-3.5-flash-lite',
-    google_api_key = GOOGLE_API_KEY
-)
+
 
 # response = model.invoke("Hello Buddy!")
 # response.content[-1]['text']
