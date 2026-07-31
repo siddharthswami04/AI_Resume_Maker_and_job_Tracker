@@ -25,7 +25,7 @@ Resume with Latest Job apply links""")
 
 st.image("https://github.com/siddharthswami04/AI_Resume_Maker_and_job_Tracker/blob/main/BG.jpg")
 st.sidebar.title("Fill Important Details")
-st.sidebarimage("https://github.com/siddharthswami04/AI_Resume_Maker_and_job_Tracker/blob/main/BG.jpg")
+st.sidebar.image("https://github.com/siddharthswami04/AI_Resume_Maker_and_job_Tracker/blob/main/BG.jpg")
 
 
 
